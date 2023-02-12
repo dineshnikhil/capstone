@@ -1,41 +1,22 @@
 import './App.css';
-import DirectoryContainer from './Components/directory/DirectoryContainer.component';
+import { Route, Routes } from 'react-router-dom';
+import Home from './routes/home/Home.component';
+import Navigation from './routes/navigation/Navigation.component';
+import SignIn from './routes/sign-in/SignIn.component';
 
 function App() {
-	const categories = [
-		{
-			id: 1,
-			title: 'hats',
-			imageUrl:
-				'https://images.pexels.com/photos/4563870/pexels-photo-4563870.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-		},
-		{
-			id: 2,
-			title: 'jackets',
-			imageUrl:
-				'https://images.pexels.com/photos/7679725/pexels-photo-7679725.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-		},
-		{
-			id: 3,
-			title: 'sneakers',
-			imageUrl:
-				'https://images.pexels.com/photos/2048548/pexels-photo-2048548.jpeg?auto=compress&cs=tinysrgb&w=1600',
-		},
-		{
-			id: 4,
-			title: 'womens',
-			imageUrl:
-				'https://images.pexels.com/photos/1144834/pexels-photo-1144834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-		},
-		{
-			id: 5,
-			title: 'mens',
-			imageUrl:
-				'https://images.pexels.com/photos/837140/pexels-photo-837140.jpeg?auto=compress&cs=tinysrgb&w=1600',
-		},
-	];
-
-	return <DirectoryContainer categories={categories} />;
+	const Shop = () => {
+		return <h1>this is shop section</h1>;
+	};
+	return (
+		<Routes>
+			<Route path="/" element={<Navigation />}>
+				<Route index element={<Home />} />
+				<Route path="shop" element={<Shop />} />
+				<Route path='sign-in' element={<SignIn />} />
+			</Route>
+		</Routes>
+	);
 }
 
 export default App;
